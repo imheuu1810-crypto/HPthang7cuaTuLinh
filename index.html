@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo cáo học tập & Học phí - Tú Linh</title>
+    <!-- Chèn font chữ Google Font để giao diện đẹp hơn -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2b4c7e;
+            --secondary-color: #2a9d8f;
+            --background-color: #f4f6f9;
+            --card-background: #ffffff;
+            --text-color: #2b2d42;
+            --text-muted: #6c757d;
+            --border-color: #e9ecef;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px 10px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+            background: var(--card-background);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Content Sections */
+        .content {
+            padding: 25px 20px;
+        }
+
+        .salutation {
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            border-left: 4px solid var(--secondary-color);
+            padding-left: 10px;
+            margin: 25px 0 15px 0;
+            font-weight: 600;
+        }
+
+        .section-title:first-of-type {
+            margin-top: 0;
+        }
+
+        /* Cards and Lists */
+        .card {
+            background: #fafbfc;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            font-size: 0.92rem;
+        }
+
+        li::before {
+            content: "•";
+            color: var(--secondary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 5px;
+            top: -2px;
+        }
+
+        /* Schedule Table */
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        .schedule-table th, .schedule-table td {
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            text-align: left;
+        }
+
+        .schedule-table th {
+            background-color: #f1f3f5;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .badge-regular {
+            background-color: #e2f0fd;
+            color: #0b5ed7;
+        }
+
+        .badge-makeup {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .text-muted-list {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 10px;
+        }
+
+        /* Tuition Area */
+        .tuition-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .fee-calc {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .fee-total {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .payment-info {
+            background: white;
+            border-radius: 6px;
+            padding: 15px;
+            margin-top: 15px;
+            border: 1px dashed #ced4da;
+            font-size: 0.9rem;
+            text-align: left;
+        }
+
+        .qr-placeholder {
+            margin: 15px auto 0 auto;
+            width: 150px;
+            height: 150px;
+            background: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            background: #fafbfc;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px 5px;
+            }
+            .header {
+                padding: 20px 15px;
+            }
+            .content {
+                padding: 15px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <div class="header">
+        <h1>BÁO CÁO KẾT QUẢ HỌC TẬP & HỌC PHÍ</h1>
+        <p>Học sinh: <strong>Tú Linh</strong> • Môn: Tiếng Anh</p>
+        <p style="font-size: 0.85rem; margin-top: 5px;">Gia sư: Huế</p>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <div class="salutation">
+            <p>Kính gửi anh/chị phụ huynh của Tú Linh,</p>
+            <p style="margin-top: 8px;">Em xin phép gửi báo cáo chi tiết tình hình học tập cùng thông báo học phí tháng vừa qua của con ạ.</p>
+        </div>
+
+        <!-- I. Nhận xét kết quả học tập -->
+        <div class="section-title">I. NHẬN XÉT KẾT QUẢ HỌC TẬP</div>
+        
+        <div class="card">
+            <div class="card-title">Thái độ & Khả năng tiếp thu</div>
+            <p style="font-size: 0.92rem;">Tú Linh tiếp thu khá tốt, hiểu bài nhanh và học rất ổn định. Con có ý thức làm bài tập về nhà đầy đủ và chỉn chu.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Nội dung đã hoàn thành</div>
+            <ul>
+                <li><strong>Unit 1: Local Community:</strong> Ôn tập chuyên sâu, hoàn thành gần 20 bài luyện tập ngữ pháp, học gần 40 từ vựng và nắm vững cấu trúc câu hỏi Wh-question.</li>
+                <li><strong>Chuyên đề Phát âm & Trọng âm:</strong> Rèn luyện cường độ cao với 200 câu bài tập cho mỗi chuyên đề. Em cũng theo sát và sửa lỗi phát âm cho con trong từng câu đọc.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Định hướng sắp tới</div>
+            <p style="font-size: 0.92rem;">Dù hiểu bài tốt, con cần tập trung cẩn thận hơn vào phần phát âm. Trong thời gian tới, em sẽ tăng cường thêm cho con các bài luyện nghe, phản xạ giao tiếp hội thoại hàng ngày, đồng thời tiếp tục mở rộng vốn từ vựng chuyên sâu và nâng cao ngữ pháp.</p>
+        </div>
+
+        <!-- II. Chi tiết lịch học -->
+        <div class="section-title">II. CHI TIẾT LỊCH HỌC</div>
+        <p style="font-size: 0.92rem; margin-bottom: 10px;">Tổng số buổi học thực tế: <strong>7 buổi</strong></p>
+        
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th>Ngày học</th>
+                    <th>Loại buổi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>03/07/2026</td><td><span class="badge badge-regular">Đúng lịch</span></td></tr>
+                <tr><td>14/07/2026</td><td><span class="badge badge-regular">Đúng lịch</span></td></tr>
+                <tr><td>17/07/2026</td><td><span class="badge badge-regular">Đúng lịch</span></td></tr>
+                <tr><td>23/07/2026</td><td><span class="badge badge-makeup">Học bù (Thứ Năm)</span></td></tr>
+                <tr><td>26/07/2026</td><td><span class="badge badge-makeup">Học bù (Chủ Nhật)</span></td></tr>
+                <tr><td>04/08/2026</td><td><span class="badge badge-regular">Đúng lịch</span></td></tr>
+                <tr><td>11/08/2026</td><td><span class="badge badge-regular">Đúng lịch</span></td></tr>
+            </tbody>
+        </table>
+        
+        <p class="text-muted-list">
+            <i>* Các buổi nghỉ có xin phép trước: 07/07, 10/07, 21/07, 28/07, 31/07 và 07/08 do gia đình bận hoặc em có lịch trình cá nhân.</i>
+        </p>
+
+        <!-- III. Thông báo học phí -->
+        <div class="section-title">III. THÔNG BÁO HỌC PHÍ</div>
+        <p style="font-size: 0.92rem;">Tháng vừa rồi là tháng học hè nên em cũng bận một số lịch thi và lịch cá nhân, dẫn đến lịch học của con phải thay đổi khá nhiều. Em rất cảm ơn anh/chị đã thông cảm. Từ tháng sau lịch học của con sẽ cố định bình thường ạ.</p>
+
+        <div class="tuition-box">
+            <div class="fee-calc">7 buổi × 200.000 VNĐ</div>
+            <div class="fee-total">1.400.000 VNĐ</div>
+            
+            <div class="payment-info">
+                <p><strong>Thông tin tài khoản nhận học phí:</strong></p>
+                <p style="margin-top: 5px;">• Ngân hàng: <strong>[Tên ngân hàng của bạn]</strong></p>
+                <p>• Số tài khoản: <strong>[Số tài khoản của bạn]</strong></p>
+                <p>• Chủ tài khoản: <strong>[Tên của bạn]</strong></p>
+                <p>• Nội dung: <strong>Hoc phi Tu Linh - Thang 7,8</strong></p>
+                
+                <!-- Bạn có thể thay thế đường dẫn ảnh QR tại đây nếu muốn -->
+                <div class="qr-placeholder">
+                    [Khu vực quét mã QR]
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>Anh/chị xem qua báo cáo, nếu cần trao đổi thêm vui lòng phản hồi lại cho em nhé. Em xin cảm ơn gia đình!</p>
+    </div>
+</div>
+
+</body>
+</html>
